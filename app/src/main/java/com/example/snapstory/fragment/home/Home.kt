@@ -1,6 +1,6 @@
-package com.example.snapstory.components.screen
+package com.example.snapstory.fragment.home
 
-import android.util.Log
+
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -21,21 +21,26 @@ import com.example.snapstory.navigaiton.Screen
 import kotlinx.coroutines.delay
 
 @Composable
-fun LoadingScreen(navController: NavController) {
+fun HomeScreen(navController: NavController) {
+    var isDataLoaded by remember { mutableStateOf(false) }
+
+    LaunchedEffect(isDataLoaded) {
+        if (isDataLoaded) {
+            delay(1000) // Optional delay for better UX
+            navController.navigate(Screen.Login.route) {
+                popUpTo(Screen.Home.route) { inclusive = true }
+            }
+        }
+    }
+
     val configuration = LocalConfiguration.current
     val screenWidth = configuration.screenWidthDp.dp
     val screenHeight = configuration.screenHeightDp.dp
 
+    // 원본 화면 비율로 박스 크기 설정
     val boxWidth = screenWidth * (177f / 393f)
     val boxHeight = screenHeight * (181f / 852f)
     val logoHeight = screenHeight * (141f / 852f)
-
-    // screenWidth, screenHeight, boxWidth, boxHeight, logoHeight를 Logcat에 출력
-    LaunchedEffect(Unit) {
-        Log.d("LogoCat", "Screen Width: ${screenWidth.value}dp, Screen Height: ${screenHeight.value}dp")
-        Log.d("LogoCat", "Box Width: ${boxWidth.value}dp, Box Height: ${boxHeight.value}dp")
-        Log.d("LogoCat", "Logo Height: ${logoHeight.value}dp")
-    }
 
     Box(
         modifier = Modifier.fillMaxSize(),
@@ -43,7 +48,9 @@ fun LoadingScreen(navController: NavController) {
     ) {
         Column(
             horizontalAlignment = Alignment.CenterHorizontally,
-            modifier = Modifier.size(boxWidth, boxHeight)
+            modifier = Modifier
+                .size(boxWidth, boxHeight)
+                .align(Alignment.TopStart)
         ) {
             // LogoIcon을 Box 크기만큼 채우도록 설정
             Logo(
@@ -52,7 +59,7 @@ fun LoadingScreen(navController: NavController) {
                     .height(logoHeight)
             )
 
-            Spacer(modifier = Modifier.height(8.dp))
+            Spacer(modifier = Modifier.height(8.dp)) // LogoIcon 아래 8dp 간격
 
             // Snap Story 텍스트
             Text(
