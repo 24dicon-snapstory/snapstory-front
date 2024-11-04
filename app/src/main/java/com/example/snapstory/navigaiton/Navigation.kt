@@ -20,6 +20,7 @@ import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.example.snapstory.components.navigation.BottomNavigationBar
 import com.example.snapstory.components.screen.LoadingScreen
+import com.example.snapstory.components.screen.LoginScreen
 import com.example.snapstory.fragment.home.HomeScreen
 
 
@@ -59,6 +60,7 @@ fun Navigation() {
                     Box(modifier = Modifier.weight(1f)) {
                         NavHost(navController = navController, startDestination = Screen.Loading.route) {
                             composable(Screen.Loading.route) { LoadingScreen(navController) }
+                            composable(Screen.Login.route) { LoginScreen(navController) }
 
                             composable(Screen.Home.route) { HomeScreen(navController) }
 

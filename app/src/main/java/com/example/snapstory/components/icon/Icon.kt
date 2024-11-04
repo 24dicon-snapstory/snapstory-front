@@ -11,6 +11,7 @@ fun Logo(modifier: Modifier = Modifier){
     Image(
         painter = painterResource(id = R.drawable.logo),
         contentDescription = null,
+        modifier = modifier
     )
 }
 
@@ -19,6 +20,7 @@ fun HomeIcon(modifier: Modifier = Modifier){
     Image(
         painter = painterResource(id = R.drawable.home),
         contentDescription = null,
+        modifier = modifier
     )
 }
 
@@ -35,6 +37,7 @@ fun AudioBookIcon(modifier: Modifier = Modifier){
     Image(
         painter = painterResource(id = R.drawable.audiobook),
         contentDescription = null,
+        modifier = modifier
     )
 }
 
@@ -43,6 +46,7 @@ fun AudioBookChosenIcon(modifier: Modifier = Modifier){
     Image(
         painter = painterResource(id = R.drawable.audiobookchosen),
         contentDescription = null,
+        modifier = modifier
     )
 }
 
@@ -51,6 +55,7 @@ fun BackWardButton(modifier: Modifier = Modifier){
     Image(
         painter = painterResource(id = R.drawable.backwardbutton),
         contentDescription = null,
+        modifier = modifier
     )
 }
 
@@ -59,6 +64,7 @@ fun BackWardSkipButton(modifier: Modifier = Modifier){
     Image(
         painter = painterResource(id = R.drawable.backwardskipbutton),
         contentDescription = null,
+        modifier = modifier
     )
 }
 
@@ -67,6 +73,7 @@ fun BookMark(modifier: Modifier = Modifier){
     Image(
         painter = painterResource(id = R.drawable.bookmark),
         contentDescription = null,
+        modifier = modifier
     )
 }
 
@@ -75,6 +82,7 @@ fun DownButton(modifier: Modifier = Modifier){
     Image(
         painter = painterResource(id = R.drawable.downbutton),
         contentDescription = null,
+        modifier = modifier
     )
 }
 
@@ -84,6 +92,7 @@ fun FindButton(modifier: Modifier = Modifier){
     Image(
         painter = painterResource(id = R.drawable.findbutton),
         contentDescription = null,
+        modifier = modifier
     )
 }
 
@@ -92,6 +101,7 @@ fun ForWardButton(modifier: Modifier = Modifier){
     Image(
         painter = painterResource(id = R.drawable.forwardbutton),
         contentDescription = null,
+        modifier = modifier
     )
 }
 
@@ -100,6 +110,7 @@ fun ForWardSkipButton(modifier: Modifier = Modifier){
     Image(
         painter = painterResource(id = R.drawable.forwardskipbutton),
         contentDescription = null,
+        modifier = modifier
     )
 }
 
@@ -108,6 +119,7 @@ fun Heart(modifier: Modifier = Modifier){
     Image(
         painter = painterResource(id = R.drawable.heart),
         contentDescription = null,
+        modifier = modifier
     )
 }
 
@@ -116,6 +128,7 @@ fun HeartColor(modifier: Modifier = Modifier){
     Image(
         painter = painterResource(id = R.drawable.heartcolor),
         contentDescription = null,
+        modifier = modifier
     )
 }
 
@@ -124,6 +137,7 @@ fun LeftButton(modifier: Modifier = Modifier){
     Image(
         painter = painterResource(id = R.drawable.leftbutton),
         contentDescription = null,
+        modifier = modifier
     )
 }
 
@@ -132,6 +146,7 @@ fun ListButton(modifier: Modifier = Modifier){
     Image(
         painter = painterResource(id = R.drawable.listbutton),
         contentDescription = null,
+        modifier = modifier
     )
 }
 
@@ -140,6 +155,7 @@ fun MoreButton(modifier: Modifier = Modifier){
     Image(
         painter = painterResource(id = R.drawable.morebutton),
         contentDescription = null,
+        modifier = modifier
     )
 }
 
@@ -148,6 +164,7 @@ fun NoContent(modifier: Modifier = Modifier){
     Image(
         painter = painterResource(id = R.drawable.no_content),
         contentDescription = null,
+        modifier = modifier
     )
 }
 
@@ -156,6 +173,7 @@ fun PlayButton(modifier: Modifier = Modifier){
     Image(
         painter = painterResource(id = R.drawable.playbutton),
         contentDescription = null,
+        modifier = modifier
     )
 }
 
@@ -164,6 +182,7 @@ fun Profile(modifier: Modifier = Modifier){
     Image(
         painter = painterResource(id = R.drawable.profile),
         contentDescription = null,
+        modifier = modifier
     )
 }
 
@@ -172,6 +191,7 @@ fun ProfileChosen(modifier: Modifier = Modifier){
     Image(
         painter = painterResource(id = R.drawable.profilechosen),
         contentDescription = null,
+        modifier = modifier
     )
 }
 
@@ -180,6 +200,7 @@ fun RightArrow(modifier: Modifier = Modifier){
     Image(
         painter = painterResource(id = R.drawable.rightarrow),
         contentDescription = null,
+        modifier = modifier
     )
 }
 
@@ -188,6 +209,7 @@ fun RightAudioBookButton(modifier: Modifier = Modifier){
     Image(
         painter = painterResource(id = R.drawable.rightaudiobookbutton),
         contentDescription = null,
+        modifier = modifier
     )
 }
 
@@ -196,6 +218,7 @@ fun StartButton(modifier: Modifier = Modifier){
     Image(
         painter = painterResource(id = R.drawable.startbutton),
         contentDescription = null,
+        modifier = modifier
     )
 }
 
@@ -204,6 +227,7 @@ fun Storage(modifier: Modifier = Modifier){
     Image(
         painter = painterResource(id = R.drawable.storage),
         contentDescription = null,
+        modifier = modifier
     )
 }
 
@@ -212,5 +236,24 @@ fun StorageChosen(modifier: Modifier = Modifier){
     Image(
         painter = painterResource(id = R.drawable.storagechosen),
         contentDescription = null,
+        modifier = modifier
+    )
+}
+
+@Composable
+fun Eye(modifier: Modifier = Modifier){
+    Image(
+        painter = painterResource(id = R.drawable.eye),
+        contentDescription = null,
+        modifier = modifier
+    )
+}
+
+@Composable
+fun Close_eye(modifier: Modifier = Modifier){
+    Image(
+        painter = painterResource(id = R.drawable.close_eye),
+        contentDescription = null,
+        modifier = modifier
     )
 }
