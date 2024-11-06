@@ -23,6 +23,8 @@ import com.example.snapstory.components.typography.Pretendard
 import com.example.snapstory.navigaiton.Screen
 import com.example.snapstory.ui.theme.Green
 import com.example.snapstory.ui.theme.Error
+import com.example.snapstory.ui.theme.TextField_Gray
+import com.example.snapstory.ui.theme.TextField_White
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -52,8 +54,8 @@ fun LoginScreen(navController: NavController) {
             ) {
                 LeftButton(
                     modifier = Modifier
-                        .width(24.dp)
-                        .height(24.dp)
+                        .width(20.dp)
+                        .height(20.dp)
                 )
             }
             Text(
@@ -78,7 +80,7 @@ fun LoginScreen(navController: NavController) {
         TextField(
             value = email,
             onValueChange = { email = it },
-            placeholder = { Text("이메일을 입력해주세요.", color = Color.Gray) },
+            placeholder = { Text("이메일을 입력해주세요.", color = TextField_Gray, fontFamily = Pretendard, fontSize = 12.sp, fontWeight = FontWeight.Medium) },
             singleLine = true,
             isError = emailError,
             modifier = Modifier
@@ -90,7 +92,7 @@ fun LoginScreen(navController: NavController) {
                 fontSize = 14.sp
             ),
             colors = TextFieldDefaults.textFieldColors(
-                containerColor = Color(0xFFF0F0F0), // 연한 회색 배경색
+                containerColor = TextField_White,
                 focusedIndicatorColor = Color.Transparent,
                 unfocusedIndicatorColor = Color.Transparent
             ),
@@ -119,7 +121,7 @@ fun LoginScreen(navController: NavController) {
         TextField(
             value = password,
             onValueChange = { password = it },
-            placeholder = { Text("비밀번호를 입력해주세요.", color = Color.Gray) },
+            placeholder = { Text("비밀번호를 입력해주세요.",  color = TextField_Gray, fontFamily = Pretendard, fontSize = 12.sp, fontWeight = FontWeight.Medium) },
             singleLine = true,
             isError = passwordError,
             modifier = Modifier
@@ -141,7 +143,7 @@ fun LoginScreen(navController: NavController) {
                 }
             },
             colors = TextFieldDefaults.textFieldColors(
-                containerColor = Color(0xFFF0F0F0), // 연한 회색 배경색
+                containerColor =TextField_White,
                 focusedIndicatorColor = Color.Transparent,
                 unfocusedIndicatorColor = Color.Transparent
             ),
@@ -175,9 +177,9 @@ fun LoginScreen(navController: NavController) {
                 )
             }
             Spacer(modifier = Modifier.width(70.dp))
-            TextButton(onClick = { /* 비밀번호 찾기 페이지 이동 */ }) {
+            TextButton(onClick = { navController.navigate(Screen.PassWord.route)}) {
                 Text(
-                    text = "비밀번호 찾기",
+                    text = "비밀번호 변경",
                     color = Color.Black,
                     fontFamily = Pretendard,
                     fontSize = 14.sp,

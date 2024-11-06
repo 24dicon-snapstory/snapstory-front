@@ -19,8 +19,11 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.example.snapstory.components.navigation.BottomNavigationBar
+import com.example.snapstory.components.screen.Chose_Interests_Screen
 import com.example.snapstory.components.screen.LoadingScreen
 import com.example.snapstory.components.screen.LoginScreen
+import com.example.snapstory.components.screen.PassWordScreen
+import com.example.snapstory.components.screen.SignUpScreen
 import com.example.snapstory.fragment.home.HomeScreen
 
 
@@ -28,7 +31,9 @@ sealed class Screen(val route: String) {
     object Loading : Screen("loading")
     object Login : Screen("login")
     object SignUp : Screen("signup")
+    object PassWord : Screen("password")
     object Home : Screen("home")
+    object Interests : Screen("interests")
     object AudioBook : Screen("audiobook")
     object Storage : Screen("storage")
     object Chose : Screen("chose")
@@ -61,9 +66,10 @@ fun Navigation() {
                         NavHost(navController = navController, startDestination = Screen.Loading.route) {
                             composable(Screen.Loading.route) { LoadingScreen(navController) }
                             composable(Screen.Login.route) { LoginScreen(navController) }
-
+                            composable(Screen.SignUp.route){SignUpScreen(navController)}
+                            composable(Screen.PassWord.route) { PassWordScreen(navController)  }
                             composable(Screen.Home.route) { HomeScreen(navController) }
-
+                            composable(Screen.Interests.route) { Chose_Interests_Screen(navController)  }
                         }
                     }
                 }

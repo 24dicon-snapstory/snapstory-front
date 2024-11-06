@@ -51,6 +51,25 @@ fun AudioBookChosenIcon(modifier: Modifier = Modifier){
 }
 
 @Composable
+fun CheckIcon(modifier: Modifier = Modifier){
+    Image(
+        painter = painterResource(id = R.drawable.check),
+        contentDescription = null,
+        modifier = modifier
+    )
+}
+
+
+@Composable
+fun CheckChosenIcon(modifier: Modifier = Modifier){
+    Image(
+        painter = painterResource(id = R.drawable.checkchosen),
+        contentDescription = null,
+        modifier = modifier
+    )
+}
+
+@Composable
 fun BackWardButton(modifier: Modifier = Modifier){
     Image(
         painter = painterResource(id = R.drawable.backwardbutton),

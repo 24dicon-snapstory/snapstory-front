@@ -12,3 +12,7 @@ val Pink40 = Color(0xFF7D5260)
 
 val Green = Color(0xFF81EE80)
 val Error =Color(0xFFFF6C6C)
+
+val Login = Color(0xFF1E90FF)
+val TextField_Gray= Color(0xFFB7B7B7)
+val TextField_White = Color(0xFFF8F8F8)
