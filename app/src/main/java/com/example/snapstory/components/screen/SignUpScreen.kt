@@ -15,11 +15,13 @@ import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import com.example.snapstory.components.icon.Close_eye
 import com.example.snapstory.components.icon.Eye
 import com.example.snapstory.components.icon.LeftButton
 import com.example.snapstory.components.typography.Pretendard
+import com.example.snapstory.data.GlobalViewModel
 import com.example.snapstory.navigaiton.Screen
 import com.example.snapstory.ui.theme.Green
 import com.example.snapstory.ui.theme.Error
@@ -29,7 +31,7 @@ import com.example.snapstory.ui.theme.TextField_White
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun SignUpScreen(navController: NavController) {
+fun SignUpScreen(navController: NavController, globalViewModel: GlobalViewModel = viewModel()) {
     var email by remember { mutableStateOf("") }
     var nickname by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
@@ -240,7 +242,10 @@ fun SignUpScreen(navController: NavController) {
 
         // 회원가입 버튼
         Button(
-            onClick = { /* TODO: 백엔드와 연결하여 회원가입 처리 */ },
+            onClick = {  globalViewModel.updateEmail(email)
+                globalViewModel.updateNickname(nickname)
+                globalViewModel.updatePassword(password)
+                navController.navigate("interests")},
             modifier = Modifier
                 .fillMaxWidth()
                 .height(48.dp)

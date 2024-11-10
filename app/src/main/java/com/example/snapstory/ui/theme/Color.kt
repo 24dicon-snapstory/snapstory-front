@@ -16,3 +16,6 @@ val Error =Color(0xFFFF6C6C)
 val Login = Color(0xFF1E90FF)
 val TextField_Gray= Color(0xFFB7B7B7)
 val TextField_White = Color(0xFFF8F8F8)
+
+
+val Fucking_white = Color(0xFFD7E0D7)

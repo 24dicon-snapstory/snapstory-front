@@ -2,8 +2,10 @@ package com.example.snapstory.components.screen
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Text
@@ -15,15 +17,19 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import com.example.snapstory.components.typography.Pretendard
+import com.example.snapstory.data.GlobalViewModel
 import com.example.snapstory.ui.theme.Green
 import com.example.snapstory.ui.theme.TextField_Gray
 import com.google.accompanist.flowlayout.FlowRow
 
-@OptIn(ExperimentalLayoutApi::class)
 @Composable
-fun Chose_Interests_Screen(navController: NavController) {
+fun Chose_Interests_Screen(
+    navController: NavController,
+    globalViewModel: GlobalViewModel = viewModel()
+) {
     val interests = remember {
         listOf(
             "\uD83E\uDDEE 경제경영", "\uD83D\uDDA5\uFE0F 컴퓨터/모바일", "\uD83D\uDCDD 에세이 ", "\uD83C\uDF93 자기계발", "\uD83D\uDCD6 인문학 ",
@@ -37,48 +43,48 @@ fun Chose_Interests_Screen(navController: NavController) {
         modifier = Modifier
             .fillMaxSize()
             .padding(16.dp),
-        horizontalAlignment = Alignment.CenterHorizontally
+        horizontalAlignment = Alignment.Start
     ) {
-
         Spacer(modifier = Modifier.height(24.dp))
-
 
         Text(
             text = "관심사 고르기",
-            style = TextStyle(fontSize = 40.sp, fontWeight = FontWeight.Bold, fontFamily = Pretendard),
+            style = TextStyle(fontSize = 36.sp, fontWeight = FontWeight.Bold, fontFamily = Pretendard),
             modifier = Modifier.align(Alignment.Start)
         )
         Spacer(modifier = Modifier.height(8.dp))
         Text(
             text = "이야기 제작에 도움이 됩니다.",
-            style = TextStyle(fontSize = 20.sp, color = TextField_Gray),
+            style = TextStyle(fontSize = 18.sp, color = TextField_Gray, fontFamily = Pretendard),
             modifier = Modifier.align(Alignment.Start)
         )
-        Spacer(modifier = Modifier.height(24.dp))
+
+        Spacer(modifier = Modifier.height(70.dp))
 
         // 관심사 Chip들
         FlowRow(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(horizontal = 8.dp),
+                .padding(horizontal = 4.dp),
             mainAxisSpacing = 8.dp,
-            crossAxisSpacing = 8.dp
+            crossAxisSpacing = 12.dp
         ) {
             interests.forEach { interest ->
-                SelectableChip(text = interest)
+                SelectableChip(text = interest, globalViewModel = globalViewModel)
             }
         }
 
-        Spacer(modifier = Modifier.weight(1f)) // 시작하기 버튼을 하단에 배치
+        Spacer(modifier = Modifier.weight(0.5f)) // 시작하기 버튼을 하단에 배치
 
         // 시작하기 버튼
         Button(
-            onClick = { /* TODO: 시작하기 버튼 클릭 동작 */ },
+            onClick = { navController.navigate("home") },
             modifier = Modifier
                 .fillMaxWidth()
-                .height(48.dp),
+                .height(48.dp)
+                .padding(horizontal = 4.dp), // 버튼 좌우 간격 조정
             colors = ButtonDefaults.buttonColors(containerColor = Green),
-            shape = CircleShape
+            shape = RoundedCornerShape(10.dp)
         ) {
             Text(
                 text = "시작하기",
@@ -89,23 +95,34 @@ fun Chose_Interests_Screen(navController: NavController) {
 }
 
 @Composable
-fun SelectableChip(text: String) {
+fun SelectableChip(text: String, globalViewModel: GlobalViewModel) {
     var isSelected by remember { mutableStateOf(false) }
 
     Box(
         modifier = Modifier
+            .padding(vertical = 4.dp)
             .background(
                 color = if (isSelected) Green else Color(0xFFF5F5F5),
                 shape = CircleShape
             )
-            .clickable { isSelected = !isSelected }
-            .padding(horizontal = 12.dp, vertical = 8.dp)
+            .clickable(
+                interactionSource = remember { MutableInteractionSource() },
+                indication = null
+            ) {
+                isSelected = !isSelected
+                if (isSelected) {
+                    globalViewModel.addInterest(text) // 선택 시 관심사 추가
+                } else {
+                    globalViewModel.removeInterest(text) // 해제 시 관심사 제거
+                }
+            }
+            .padding(horizontal = 16.dp, vertical = 8.dp)
     ) {
         Text(
             text = text,
             style = TextStyle(
                 fontSize = 14.sp,
-                color = if (isSelected) Color.White else Color.Black,
+                color = if (isSelected) Color.Black else Color.Black,
                 fontFamily = Pretendard
             )
         )

@@ -1,10 +1,22 @@
 package com.example.snapstory.components.icon
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.size
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.unit.dp
 import com.example.snapstory.R
+
+
+@Composable
+fun AIIcon(modifier: Modifier = Modifier){
+    Image(
+        painter = painterResource(id = R.drawable.ai),
+        contentDescription = null,
+        modifier = modifier
+    )
+}
 
 @Composable
 fun Logo(modifier: Modifier = Modifier){
@@ -20,7 +32,7 @@ fun HomeIcon(modifier: Modifier = Modifier){
     Image(
         painter = painterResource(id = R.drawable.home),
         contentDescription = null,
-        modifier = modifier
+        modifier = modifier.size(30.dp)
     )
 }
 
@@ -29,6 +41,7 @@ fun HomeChosenIcon(modifier: Modifier = Modifier){
     Image(
         painter = painterResource(id = R.drawable.homechosen),
         contentDescription = null,
+        modifier = modifier.size(30.dp)
     )
 }
 
@@ -37,7 +50,7 @@ fun AudioBookIcon(modifier: Modifier = Modifier){
     Image(
         painter = painterResource(id = R.drawable.audiobook),
         contentDescription = null,
-        modifier = modifier
+        modifier = modifier.size(30.dp)
     )
 }
 
@@ -46,7 +59,7 @@ fun AudioBookChosenIcon(modifier: Modifier = Modifier){
     Image(
         painter = painterResource(id = R.drawable.audiobookchosen),
         contentDescription = null,
-        modifier = modifier
+        modifier = modifier.size(30.dp)
     )
 }
 
@@ -55,7 +68,7 @@ fun CheckIcon(modifier: Modifier = Modifier){
     Image(
         painter = painterResource(id = R.drawable.check),
         contentDescription = null,
-        modifier = modifier
+        modifier = modifier.size(30.dp)
     )
 }
 
@@ -65,7 +78,7 @@ fun CheckChosenIcon(modifier: Modifier = Modifier){
     Image(
         painter = painterResource(id = R.drawable.checkchosen),
         contentDescription = null,
-        modifier = modifier
+        modifier = modifier.size(30.dp)
     )
 }
 
@@ -128,6 +141,15 @@ fun ForWardButton(modifier: Modifier = Modifier){
 fun ForWardSkipButton(modifier: Modifier = Modifier){
     Image(
         painter = painterResource(id = R.drawable.forwardskipbutton),
+        contentDescription = null,
+        modifier = modifier
+    )
+}
+
+@Composable
+fun CloseIcon(modifier: Modifier = Modifier){
+    Image(
+        painter = painterResource(id = R.drawable.close),
         contentDescription = null,
         modifier = modifier
     )
@@ -201,16 +223,16 @@ fun Profile(modifier: Modifier = Modifier){
     Image(
         painter = painterResource(id = R.drawable.profile),
         contentDescription = null,
-        modifier = modifier
+        modifier = modifier.size(30.dp)
     )
 }
 
 @Composable
-fun ProfileChosen(modifier: Modifier = Modifier){
+fun ProfileChosenIcon(modifier: Modifier = Modifier){
     Image(
         painter = painterResource(id = R.drawable.profilechosen),
         contentDescription = null,
-        modifier = modifier
+        modifier = modifier.size(30.dp)
     )
 }
 
@@ -246,16 +268,16 @@ fun Storage(modifier: Modifier = Modifier){
     Image(
         painter = painterResource(id = R.drawable.storage),
         contentDescription = null,
-        modifier = modifier
+        modifier = modifier.size(30.dp)
     )
 }
 
 @Composable
-fun StorageChosen(modifier: Modifier = Modifier){
+fun StorageChosenIcon(modifier: Modifier = Modifier){
     Image(
         painter = painterResource(id = R.drawable.storagechosen),
         contentDescription = null,
-        modifier = modifier
+        modifier = modifier.size(30.dp)
     )
 }
 

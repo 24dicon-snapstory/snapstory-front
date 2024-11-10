@@ -34,6 +34,7 @@ import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import com.example.snapstory.components.icon.CheckChosenIcon
 import com.example.snapstory.components.icon.CheckIcon
@@ -41,6 +42,7 @@ import com.example.snapstory.components.icon.Close_eye
 import com.example.snapstory.components.icon.Eye
 import com.example.snapstory.components.icon.LeftButton
 import com.example.snapstory.components.typography.Pretendard
+import com.example.snapstory.data.GlobalViewModel
 import com.example.snapstory.ui.theme.Error
 import com.example.snapstory.ui.theme.Green
 import com.example.snapstory.ui.theme.TextField_Gray
@@ -51,7 +53,7 @@ import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun PassWordScreen(navController: NavController) {
+fun PassWordScreen(navController: NavController, globalViewModel: GlobalViewModel = viewModel()) {
     var email by remember { mutableStateOf("") }
     var emailError by remember { mutableStateOf(false) }
     var emailExists by remember { mutableStateOf(false) }
@@ -297,6 +299,7 @@ fun PassWordScreen(navController: NavController) {
 //                    navController.navigate("home") // 홈 화면으로 이동
 //                }
 
+                globalViewModel.updatePassword(password)
                 navController.navigate("interests")
             },
             modifier = Modifier

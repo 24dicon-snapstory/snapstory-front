@@ -12,49 +12,33 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import com.example.snapstory.components.search.SearchViewModel
+import com.example.snapstory.data.GlobalViewModel
 import com.example.snapstory.navigaiton.Navigation
 import com.example.snapstory.ui.theme.SnapstoryTheme
 
+// MainActivity.kt
+
+import com.example.snapstory.data.TextDataViewModel
+
 class MainActivity : ComponentActivity() {
-//    override fun onCreate(savedInstanceState: Bundle?) {
-//        super.onCreate(savedInstanceState)
-//        enableEdgeToEdge()
-//        setContent {
-//            SnapstoryTheme {
-//                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-//                    Greeting(
-//                        name = "Android",
-//                        modifier = Modifier.padding(innerPadding)
-//                    )
-//                }
-//            }
-//        }
-//    }
+    private val globalViewModel: GlobalViewModel by viewModels()
+    private val searchViewModel: SearchViewModel by viewModels()
+    private val textDataViewModel: TextDataViewModel by viewModels() // Define TextDataViewModel here
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-//        val diaryViewModel: DiaryViewModel by viewModels()
-        //clearFirebaseDatabase()
         setContent {
-//            deleteAllData()
-//            Navigation(viewModel = diaryViewModel)
-            Navigation()
+            SnapstoryTheme {
+                Navigation(
+                    globalViewModel = globalViewModel,
+                    searchViewModel = searchViewModel,
+                    textDataViewModel = textDataViewModel // Pass it to Navigation
+                )
+            }
         }
     }
 }
 
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
 
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    SnapstoryTheme {
-        Greeting("Android")
-    }
-}
+
